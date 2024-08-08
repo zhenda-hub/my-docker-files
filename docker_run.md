@@ -18,33 +18,3 @@ docker run -d --gpus=all -v ollama:/root/.ollama -p 11434:11434 --name ollama ol
 
 <https://docs.portainer.io/start/upgrade/docker>
 <https://docs.docker.com/build/builders/>
-
-
-## windows docker 占用内存过大
-
-## apt换国内源
-
-```bash
-
-```
-
-## docker换国内源
-
-```bash
-sudo nano /etc/docker/daemon.json
-```
-
-```bash
-{
-    "registry-mirrors": [
-        "https://docker.m.daocloud.io", 
-        "https://noohub.ru", 
-        "https://huecker.io",
-        "https://dockerhub.timeweb.cloud",
-        "https://mirror.ccs.tencentyun.com",
-        "https://registry.docker-cn.com",
-        "http://docker.mirrors.ustc.edu.cn",
-        "http://hub-mirror.c.163.com"
-    ]
-}
-```
