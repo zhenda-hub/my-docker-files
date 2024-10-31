@@ -3,7 +3,7 @@ services:
     image: gitlab/gitlab-ce:16.7.9-ce.0
     # image: gitlab/gitlab-ce:nightly
     container_name: gitlab
-    restart: always
+    # restart: always
     hostname: 'gitlab.example.com'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
