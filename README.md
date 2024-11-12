@@ -9,4 +9,4 @@
 ~/Documents/docker_ws/immich-app
 
 - windows
-
+F:\ME2\docker_ws
