@@ -22,6 +22,9 @@ docker run -d --name mrdoc -p 10086:10086 -v ~/mrdoc:/app/MrDoc/config -v ~/mrdo
 
 # memos
 docker run -d --name memos -p 5230:5230 -v ~/.memos/:/var/opt/memos neosmemo/memos:stable
+
+# maxkb
+docker run -d --name=maxkb -p 8080:8080 -v ./maxkb:/var/lib/postgresql/data -v ./python-packages:/opt/maxkb/app/sandbox/python-packages cr2.fit2cloud.com/1panel/maxkb
 ```
 
 <https://docs.portainer.io/start/upgrade/docker>
