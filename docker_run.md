@@ -25,6 +25,9 @@ docker run -d --name memos -p 5230:5230 -v ~/.memos/:/var/opt/memos neosmemo/mem
 
 # maxkb
 docker run -d --name=maxkb -p 8080:8080 -v ./maxkb:/var/lib/postgresql/data -v ./python-packages:/opt/maxkb/app/sandbox/python-packages cr2.fit2cloud.com/1panel/maxkb
+
+# ebook2audiobook
+docker run -it --rm -p 7860:7860 --platform=linux/amd64 athomasson2/ebook2audiobook python app.py
 ```
 
 <https://docs.portainer.io/start/upgrade/docker>
