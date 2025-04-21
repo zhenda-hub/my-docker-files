@@ -4,6 +4,7 @@
 # =================sys=================
 # glances
 docker run -d --restart="always" -p 61208-61209:61208-61209 -e GLANCES_OPT="-w" -v /var/run/docker.sock:/var/run/docker.sock:ro --pid host nicolargo/glances:latest-full
+docker run -d --restart="always" -p 61208-61209:61208-61209 -e GLANCES_OPT="-w" -v /var/run/docker.sock:/var/run/docker.sock:ro -v /run/user/1000/podman/podman.sock:/run/user/1000/podman/podman.sock:ro --pid host nicolargo/glances:latest
 
 # portainer
 # old
@@ -28,7 +29,22 @@ docker run -d --name=maxkb -p 8080:8080 -v ./maxkb:/var/lib/postgresql/data -v .
 
 # ebook2audiobook
 docker run -it --rm -p 7860:7860 --platform=linux/amd64 athomasson2/ebook2audiobook python app.py
+
+
+# n8n
+
+docker volume create n8n_data
+docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n
+
+
+
+# dify
+
+
 ```
+
+
+
 
 <https://docs.portainer.io/start/upgrade/docker>
 <https://docs.docker.com/build/builders/>
