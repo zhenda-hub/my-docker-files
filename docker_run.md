@@ -28,7 +28,7 @@ docker run -d --name mrdoc -p 10086:10086 -v ~/mrdoc:/app/MrDoc/config -v ~/mrdo
 docker run -d --name memos -p 5230:5230 -v ~/.memos/:/var/opt/memos neosmemo/memos:stable
 
 # maxkb
-docker run -d --name=maxkb -p 8080:8080 -v ./maxkb:/var/lib/postgresql/data -v ./python-packages:/opt/maxkb/app/sandbox/python-packages cr2.fit2cloud.com/1panel/maxkb
+docker run -d --name=maxkb -p 8080:8080 -v ~/maxkb:/var/lib/postgresql/data -v ~/python-packages:/opt/maxkb/app/sandbox/python-packages cr2.fit2cloud.com/1panel/maxkb
 
 # ebook2audiobook
 docker run -it --rm -p 7860:7860 --platform=linux/amd64 athomasson2/ebook2audiobook python app.py
@@ -54,14 +54,6 @@ docker run \
     -p 8080:80 \
     filebrowser/filebrowser:s6
 
-docker run \
-    -v ./root:/srv \
-    -v ./filebrowser.db:/database/filebrowser.db \
-    -v ./settings.json:/config/settings.json \
-    -e PUID=$(id -u) \
-    -e PGID=$(id -g) \
-    -p 8080:80 \
-    filebrowser/filebrowser
 ```
 
 
