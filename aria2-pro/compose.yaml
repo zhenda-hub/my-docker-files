@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  aria2-pro:
+    image: p3terx/aria2-pro
+    container_name: aria2
+    restart: unless-stopped
+    ports:
+      - "6800:6800"       # RPC 端口
+      - "6880:6880"         # AriaNg WebUI
+      - "51413:51413"     # BT 端口
+      - "51413:51413/udp"
+    volumes:
+      - ./config:/config
+      - ./downloads:/downloads
+    environment:
+      - RPC_SECRET=your_rpc_token
+      - TZ=Asia/Shanghai

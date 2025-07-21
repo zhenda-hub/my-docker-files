@@ -54,6 +54,15 @@ docker run \
     -p 8080:80 \
     filebrowser/filebrowser:s6
 
+
+# cinemore
+
+docker run -d \
+  --name cinemore-server \
+  -p 8000:8000 \
+  -v /path/to/data:/app/data \
+  -v /path/to/media:/media \
+  cinemore/cinemore-server:latest
 ```
 
 
