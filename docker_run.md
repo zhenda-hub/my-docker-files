@@ -59,9 +59,9 @@ docker run \
 
 docker run -d \
   --name cinemore-server \
-  -p 8000:8000 \
-  -v /path/to/data:/app/data \
-  -v /path/to/media:/media \
+  -p 8500:8000 \
+  -v ./data:/app/data \
+  -v ./media:/media \
   cinemore/cinemore-server:latest
 ```
 
