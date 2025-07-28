@@ -46,7 +46,7 @@ docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n
 # filebrowser
 
 docker run \
-    -v ~/filebrowser/root:/srv \
+    -v ~/xxxx:/srv \
     -v ~/filebrowser/filebrowser.db:/database/filebrowser.db \
     -v ~/filebrowser/settings.json:/config/settings.json \
     -e PUID=$(id -u) \
