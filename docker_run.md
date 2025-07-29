@@ -63,6 +63,13 @@ docker run -d \
   -v ./data:/app/data \
   -v ./media:/media \
   cinemore/cinemore-server:latest
+
+# mediago 
+docker run -d \
+  --name mediago \
+  -p 8899:8899 \
+  -v ./mediago:/root/mediago \
+  registry.cn-beijing.aliyuncs.com/caorushizi/mediago:v3.0.0
 ```
 
 
