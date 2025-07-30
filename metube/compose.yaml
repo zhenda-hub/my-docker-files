@@ -9,6 +9,34 @@ services:
       - ./downloads:/downloads
       - ./cookies:/cookies
     environment:
-      - YTDL_OPTIONS={"cookiefile":"/cookies/cookies.txt"}
-      - 'OUTPUT_TEMPLATE=%(playlist_title&Playlist |)S%(playlist_title|)S%(playlist_uploader& by |)S%(playlist_uploader|)S%(playlist_autonumber& - |)S%(playlist_autonumber|)S%(playlist_count& of |)S%(playlist_count|)S%(playlist_autonumber& - |)S%(uploader,creator|UNKNOWN_AUTHOR)S - %(title|UNKNOWN_TITLE)S - %(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|UNKNOWN_DATE)S.%(ext)s'
-      - 'YTDL_OPTIONS={"writesubtitles":true,"subtitleslangs":["en","-live_chat"],"updatetime":false,"postprocessors":[{"key":"Exec","exec_cmd":"chmod 0664","when":"after_move"},{"key":"FFmpegEmbedSubtitle","already_have_subtitle":false},{"key":"FFmpegMetadata","add_chapters":true}]}'
+      OUTPUT_TEMPLATE: >-
+        %(playlist_title&Playlist |)S%(playlist_title|)S%(playlist_uploader& by |)S%(playlist_uploader|)S%(playlist_autonumber& - |)S%(playlist_autonumber|)S%(playlist_count& of |)S%(playlist_count|)S%(playlist_autonumber& - |)S%(uploader,creator|UNKNOWN_AUTHOR)S - %(title|UNKNOWN_TITLE)S - %(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|UNKNOWN_DATE)S.%(ext)s
+      YTDL_OPTIONS: >-
+        {
+          "cookiefile": "/cookies/cookies.txt",
+          "add_metadata": true,
+          "writesubtitles": true,
+          "writeautomaticsub": true,
+          "subtitleslangs": ["zh", "en", "-live_chat"],
+          "subtitlesformat": "srt",
+          "embedsubtitles": false,
+          "updatetime": false,
+          "writethumbnail": true,
+          "writeinfojson": true,
+          "restrictfilenames": true,
+          "postprocessors": [
+            {
+              "key": "Exec",
+              "exec_cmd": "chmod 0664",
+              "when": "after_move"
+            },
+            {
+              "key": "FFmpegEmbedSubtitle",
+              "already_have_subtitle": false
+            },
+            {
+              "key": "FFmpegMetadata",
+              "add_chapters": true
+            }
+          ]
+        }
