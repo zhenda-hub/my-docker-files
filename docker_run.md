@@ -71,6 +71,14 @@ docker run -d \
   -p 8899:8899 \
   -v ./mediago:/root/mediago \
   registry.cn-beijing.aliyuncs.com/caorushizi/mediago:v3.0.0
+
+# dashy
+docker run -d \
+  -p 4000:8080 \
+  -v /root/my-local-conf.yml:/app/user-data/conf.yml \
+  --name my-dashboard \
+  --restart=always \
+  lissy93/dashy:latest
 ```
 
 
