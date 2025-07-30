@@ -1,1 +1,170 @@
 site_name: My Nas Docs
+
+# nav:
+#   - Home: index.md
+#   - 入门指南:
+#       - 安装: getting-started/installation.md
+#       - 配置: getting-started/configuration.md
+#   - 高级功能:
+#       - 插件: advanced/plugins.md
+#       - 自定义主题: advanced/customization.md
+#   - API 参考: api.md
+#   - 常见问题: faq.md
+#   - 关于我们: about.md
+    
+# theme: readthedocs
+theme:
+  name: material
+  # language: zh
+  # language: en
+  features:
+    # - navigation.tabs  # 顶部使用 Tab
+    # - navigation.tabs.sticky  # 悬浮固定
+    - navigation.expand  # 侧边栏默认展开
+    # - navigation.indexes  # 侧边栏索引
+    - navigation.path  # 面包屑导航
+    - navigation.top  # 返回顶部
+    - navigation.tracking  # 锚点跟踪
+    - search.suggest
+    - search.highlight
+    - content.code.copy  # 代码块添加复制按钮
+    - content.code.annotate
+    - content.action.edit
+    - toc.follow  # 侧边栏会自动滚动
+  palette:
+    # - scheme: default  # 浅色模式
+    #   primary: indigo  # 主色调：靛蓝
+    #   accent: blue     # 强调色：深蓝
+    #   toggle:
+    #     icon: material/weather-night
+    # - scheme: slate    # 暗色模式
+    #   primary: indigo
+    #   accent: blue
+    #   toggle:
+    #     icon: material/weather-sunny
+    - scheme: default
+      primary: teal
+      accent: light-green
+      toggle:
+        icon: material/weather-night
+    - scheme: slate
+      primary: teal
+      accent: light-green
+      toggle:
+        icon: material/weather-sunny
+    - scheme: default
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/weather-night
+    - scheme: slate
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/weather-sunny
+    # - scheme: default
+    #   primary: orange
+    #   accent: amber
+    #   toggle:
+    #     icon: material/weather-night
+    # - scheme: slate
+    #   primary: orange
+    #   accent: amber
+    #   toggle:
+    #     icon: material/weather-sunny
+    # - scheme: default
+    #   primary: brown
+    #   accent: red
+    #   toggle:
+    #     icon: material/weather-night
+    # - scheme: slate
+    #   primary: brown
+    #   accent: red
+    #   toggle:
+    #     icon: material/weather-sunny
+    - scheme: default
+      primary: grey
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+    - scheme: slate
+      primary: grey
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+
+        # icon: material/weather-night
+        # icon: material/weather-sunny
+        # icon: material/lightbulb-outline
+        # icon: material/lightbulb
+
+plugins:
+  - search
+  - awesome-pages
+  # - i18n:
+  #     default_language: zh
+  #     languages:
+  #       - locale: zh
+  #         name: 简体中文
+  #         default: true
+  #         build: true
+  #       - locale: en
+  #         name: English
+  #         build: true
+
+  # - blog
+
+copyright: Copyright &copy; 2025 zhenda
+
+
+markdown_extensions:
+
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true               # 行号锚点
+      line_spans: __span                  # 行跨度
+      pygments_lang_class: true           # 语言类名
+      auto_title: true                    # 自动标题
+      linenums: true                      # 显示行号
+      linenums_style: pymdownx-inline     # 行号样式
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  # ✅ 语法高亮 + 代码增强
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid                   # Mermaid图表支持
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: vegalite                  # Vega-Lite图表支持
+          class: vegalite
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra_javascript:
+  - js/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
