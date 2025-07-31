@@ -100,7 +100,6 @@ theme:
 
 plugins:
   - search
-  - awesome-pages
   # - i18n:
   #     default_language: zh
   #     languages:
