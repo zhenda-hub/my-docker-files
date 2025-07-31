@@ -2,27 +2,30 @@ site_name: My Nas Docs
 
 nav:
   - 首页: index.md
-  - 概述:
-    - overview/index.md
-    - 什么是 NAS?: overview/what-is-nas.md
-    - 硬件选择: overview/hardware.md
-    - 家庭媒体中心: overview/home-media-center.md
-    - 小企业NAS: overview/small-business-nas.md
-    - 系统安装: overview/installation.md
-  - 快速开始: 
-    - quickstart/index.md
-    - 首次配置: quickstart/first-config.md
-    - Docker 部署: quickstart/docker-tutorial.md
-    - 网络优化: quickstart/network-optimization.md
-    - 系统监控: quickstart/monitoring.md
-  - 进阶配置: 
-    - advanced/index.md
-    - 远程访问: advanced/remote.md
-    - 自动化脚本: advanced/automation-scripts.md
-    - 备份策略: advanced/backup-strategies.md
-    - 安全设置: advanced/security.md
-    - VPN设置: advanced/vpn-setup.md
-    - SSL证书: advanced/ssl-certificates.md
+  - 什么是 NAS?: overview/what-is-nas.md
+  - 首次配置: quickstart/first-config.md
+  - 远程访问: advanced/remote.md
+  # - 概述:
+  #   - overview/index.md
+  #   - 什么是 NAS?: overview/what-is-nas.md
+  #   - 硬件选择: overview/hardware.md
+  #   - 家庭媒体中心: overview/home-media-center.md
+  #   - 小企业NAS: overview/small-business-nas.md
+  #   - 系统安装: overview/installation.md
+  # - 快速开始: 
+  #   - quickstart/index.md
+  #   - 首次配置: quickstart/first-config.md
+  #   - Docker 部署: quickstart/docker-tutorial.md
+  #   - 网络优化: quickstart/network-optimization.md
+  #   - 系统监控: quickstart/monitoring.md
+  # - 进阶配置: 
+  #   - advanced/index.md
+  #   - 远程访问: advanced/remote.md
+  #   - 自动化脚本: advanced/automation-scripts.md
+  #   - 备份策略: advanced/backup-strategies.md
+  #   - 安全设置: advanced/security.md
+  #   - VPN设置: advanced/vpn-setup.md
+  #   - SSL证书: advanced/ssl-certificates.md
   - 应用指南:
     - applications/index.md
   # - 基础工具:
@@ -44,8 +47,7 @@ nav:
     - 密码管理: applications/productivity/password-manager.md
   # - 首页工具:
     - Homer: applications/homer.md
-  - 常见问题:
-    - 故障排查: troubleshooting.md
+  - 常见问题: troubleshooting.md
 # theme: readthedocs
 theme:
   name: material
