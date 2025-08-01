@@ -27,7 +27,7 @@ nav:
   #   - VPN设置: advanced/vpn-setup.md
   #   - SSL证书: advanced/ssl-certificates.md
   - 应用指南:
-    - applications/index.md
+    # - applications/index.md
   # - 基础工具:
     - FileBrowser 文件浏览: applications/filebrowser.md
     - Portainer: applications/portainer.md
@@ -59,7 +59,7 @@ theme:
     # - navigation.tabs  # 顶部使用 Tab
     # - navigation.tabs.sticky  # 悬浮固定
     - navigation.expand  # 侧边栏默认展开
-    - navigation.indexes  # 侧边栏索引
+    # - navigation.indexes  # 侧边栏索引
     - navigation.path  # 面包屑导航
     - navigation.top  # 返回顶部
     - navigation.tracking  # 锚点跟踪
@@ -85,16 +85,16 @@ theme:
     #   accent: blue
     #   toggle:
     #     icon: material/weather-sunny
-    - scheme: default
-      primary: teal
-      accent: light-green
-      toggle:
-        icon: material/weather-night
-    - scheme: slate
-      primary: teal
-      accent: light-green
-      toggle:
-        icon: material/weather-sunny
+    # - scheme: default
+    #   primary: teal
+    #   accent: light-green
+    #   toggle:
+    #     icon: material/weather-night
+    # - scheme: slate
+    #   primary: teal
+    #   accent: light-green
+    #   toggle:
+    #     icon: material/weather-sunny
     - scheme: default
       primary: deep purple
       accent: purple
@@ -125,16 +125,16 @@ theme:
     #   accent: red
     #   toggle:
     #     icon: material/weather-sunny
-    - scheme: default
-      primary: grey
-      accent: cyan
-      toggle:
-        icon: material/weather-night
-    - scheme: slate
-      primary: grey
-      accent: cyan
-      toggle:
-        icon: material/weather-sunny
+    # - scheme: default
+    #   primary: grey
+    #   accent: cyan
+    #   toggle:
+    #     icon: material/weather-night
+    # - scheme: slate
+    #   primary: grey
+    #   accent: cyan
+    #   toggle:
+    #     icon: material/weather-sunny
 
         # icon: material/weather-night
         # icon: material/weather-sunny
