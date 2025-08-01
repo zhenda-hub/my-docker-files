@@ -10,3 +10,25 @@
 
 - windows
 F:\ME2\docker_ws
+
+
+
+
+glances
+portainer
+
+filebrowser
+gitlab
+wiki
+
+
+Aria2-Pro
+metube
+
+navidrome
+stash
+immich
+
+dashy
+homarr
+homepage
