@@ -1,6 +1,5 @@
 # 🧾 FileBrowser 使用指南
 
-![FileBrowser Logo](https://via.placeholder.com/800x300.png?text=FileBrowser)  
 *轻量级 Web 文件管理器*
 
 ---
