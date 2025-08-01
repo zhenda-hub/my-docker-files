@@ -16,11 +16,7 @@ F:\ME2\docker_ws
 
 glances
 portainer
-
 filebrowser
-gitlab
-wiki
-
 
 Aria2-Pro
 metube
@@ -32,3 +28,8 @@ immich
 dashy
 homarr
 homepage
+
+
+gitlab
+gitea
+wiki
