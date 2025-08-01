@@ -15,14 +15,22 @@ F:\ME2\docker_ws
 
 
 glances
+Uptime Kuma
+
 portainer
 filebrowser
+Watchtower
+
+frp
+<https://hub.docker.com/r/linuxserver/duplicati>
 
 Aria2-Pro
 metube
 
 navidrome
+Music-tag-web
 stash
+Metatube
 immich
 
 dashy
@@ -33,3 +41,4 @@ homepage
 gitlab
 gitea
 wiki
+Syncclipboard
