@@ -21,8 +21,8 @@ services:
           "subtitlesformat": "srt",
           "embedsubtitles": false,
           "updatetime": false,
-          "writethumbnail": true,
-          "writeinfojson": true,
+          "writethumbnail": false,
+          "writeinfojson": false,
           "restrictfilenames": true,
           "postprocessors": [
             {
