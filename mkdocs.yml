@@ -22,8 +22,9 @@ nav:
   # - 基础工具:
     - FileBrowser 文件浏览: applications/filebrowser.md
     - Portainer: applications/portainer.md
+    - 备份工具: applications/duplicati.md
   # - 娱乐工具:
-    - CasaOS 与管理工具: applications/casaos.md
+    # - CasaOS 与管理工具: applications/casaos.md
     - Jellyfin: applications/media-server/jellyfin.md
   # - 下载工具:
     - Aria2 下载中心: applications/aria2.md
