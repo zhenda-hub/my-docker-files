@@ -1,4 +1,4 @@
-site_name: My Nas Docs
+site_name: Zhenda Nas Docs
 
 nav:
   - 首页: index.md
@@ -41,9 +41,10 @@ nav:
     - Homer: applications/homer.md
   - 进阶配置: 
     - 远程访问: advanced/remote.md
-    - 自动化脚本: advanced/automation-scripts.md
     - 备份策略: advanced/backup-strategies.md
+    # - 备份策略test: advanced/backup-test.md
     - 安全设置: advanced/security.md
+    - 自动化脚本: advanced/automation-scripts.md
   #   - VPN设置: advanced/vpn-setup.md
   #   - SSL证书: advanced/ssl-certificates.md
   - 常见问题: troubleshooting.md
