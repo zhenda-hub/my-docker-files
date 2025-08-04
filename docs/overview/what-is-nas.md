@@ -1,6 +1,5 @@
 # 欢迎来到 NAS 世界 🚀
 
-![NAS Logo](https://via.placeholder.com/800x300.png?text=NAS+Home)  
 *你的个人云端服务器*
 
 ---

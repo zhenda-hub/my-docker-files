@@ -86,8 +86,6 @@
 
 ## 📚 延伸阅读
 
-* [家庭 NAS 数据备份指南](./nas_backup_guide.md)
-* [家庭 NAS 安全指南](./nas_security_guide.md)
 * [immich：开源 AI 照片系统](https://github.com/immich-app/immich)
 * [OpenMediaVault 官方](https://www.openmediavault.org/)
 * [Unraid Wiki](https://wiki.unraid.net/UnRAID_6/Manual)
@@ -102,7 +100,3 @@
 * 安全与稳定优先，建议每月维护和备份一次
 
 > 用 NAS 守护你的数字生活，用数据记录家庭的每一个瞬间。
-
----
-
-*版本：2025-08*
