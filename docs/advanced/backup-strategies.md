@@ -133,7 +133,6 @@ duplicacy backup -storage gdrive -stats
 * [Duplicacy 官网](https://duplicacy.com/)
 * [Restic 文档](https://restic.readthedocs.io/)
 * [群晖 Hyper Backup 使用指南](https://kb.synology.cn/zh-cn/DSM/help/DSM/Backup/backup_hyperbackup)
-* [immich：照片管理开源方案](https://github.com/immich-app/immich)
 
 ---
 
