@@ -74,6 +74,13 @@ docker run -d \
 
 # dashy
 docker run -p 8080:8080 lissy93/dashy
+
+# mp
+docker run -d \
+  --name moviepilot \
+  -p 3000:3000 \
+  -v ./config:/config \
+  jxxghp/moviepilot-v2:latest
 ```
 
 
