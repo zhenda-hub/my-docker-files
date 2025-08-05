@@ -12,3 +12,5 @@ docker run -d \
 - 增量备份
 - 支持多种云存储后端
 - Web界面管理
+
+<https://hub.docker.com/r/linuxserver/duplicati>
