@@ -243,3 +243,12 @@ services:
       - /path/to/ssd:/config/transcodes  # 临时转码文件
       - /path/to/hdd:/media             # 媒体库
 ```
+
+
+```bash
+# 安装 VAAPI 支持库
+sudo apt install libva-glx2 libva-drm2 libva-x11-2 libva-dev
+#  检查 VAAPI 驱动是否安装成功
+vainfo
+```
+
