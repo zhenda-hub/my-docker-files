@@ -19,29 +19,39 @@ nav:
   #   - 系统监控: quickstart/monitoring.md
   - 应用指南:
     # - applications/index.md
-  # - 基础工具:
-    - FileBrowser 文件浏览: applications/filebrowser.md
-    - Portainer: applications/portainer.md
-    - 备份工具: applications/duplicati.md
-  # - 娱乐工具:
-    # - CasaOS 与管理工具: applications/casaos.md
-    - Jellyfin: applications/media-server/jellyfin.md
-  # - 下载工具:
-    - Aria2 下载中心: applications/aria2.md
-    - qBittorrent: applications/download-clients/qbittorrent.md
-  # - 网盘工具:
-    - Cloudreve 私有云: applications/cloudreve.md
-    - Nextcloud: applications/productivity/nextcloud.md
-  # - 生产力工具:
-    # - applications/productivity/index.md
-    - GitLab: applications/productivity/gitlab.md
-    - Wiki: applications/productivity/wiki.md
-    - 密码管理: applications/productivity/password-manager.md
-  # - 首页工具:
-    - Homer: applications/homer.md
+    - 系统工具:
+      - Portainer 控制面板: applications/system/portainer.md
+      - Glances 系统监控: applications/system/glances.md
+      - FileBrowser 文件浏览: applications/system/filebrowser.md
+      - Duplicati 备份工具: applications/system/duplicati.md
+      - Frp 内网穿透: applications/system/frp.md
+    - 下载工具:
+      - metube 下载中心: applications/download/metube.md
+      - Aria2 下载中心: applications/download/aria2.md
+      - qBittorrent: applications/download/qbittorrent.md
+    - 媒体工具:
+      - Jellyfin: applications/media/jellyfin.md
+      - Metatube: applications/media/metatube.md
+      # - Stash: applications/media/stash.md
+      - Immich: applications/media/immich.md
+      - Navidrome: applications/media/navidrome.md
+      - Music-tag-web: applications/media/music-tag-web.md
+    # - 生产力工具:
+    #   - GitLab: applications/productivity/gitlab.md
+    #   - Gitea: applications/productivity/gitea.md
+    #   - Wiki: applications/productivity/wiki.md
+    #   - 密码管理: applications/productivity/password-manager.md
+    - 其他工具:
+      - Homer: applications/other/homer.md
+      - Homepage: applications/other/homepage.md
+      - Dashy: applications/other/dashy.md
+      - Nextcloud: applications/productivity/nextcloud.md
+      - cloudreve 私有云: applications/other/cloudreve.md
+      - CasaOS: applications/other/casaos.md
   - 进阶配置: 
     - 远程访问: advanced/remote.md
     - 备份策略: advanced/backup-strategies.md
+    - 高可用策略: advanced/high-availability.md
     # - 备份策略test: advanced/backup-test.md
     - 安全设置: advanced/security.md
     - 自动化脚本: advanced/automation-scripts.md
