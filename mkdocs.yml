@@ -24,6 +24,7 @@ nav:
       - Glances 系统监控: applications/system/glances.md
       - FileBrowser 文件浏览: applications/system/filebrowser.md
       - Duplicati 备份工具: applications/system/duplicati.md
+      - Restic 备份工具: applications/system/restic.md
       - Frp 内网穿透: applications/system/frp.md
     - 下载工具:
       - metube 下载中心: applications/download/metube.md
@@ -49,15 +50,16 @@ nav:
       - cloudreve 私有云: applications/other/cloudreve.md
       - CasaOS: applications/other/casaos.md
   - 进阶配置: 
-    - 远程访问: advanced/remote.md
-    - 备份策略: advanced/backup-strategies.md
-    - 高可用策略: advanced/high-availability.md
     # - 备份策略test: advanced/backup-test.md
+    - 备份策略: advanced/backup-strategies.md
+    - 远程访问: advanced/remote.md
     - 安全设置: advanced/security.md
+    - 高可用策略: advanced/high-availability.md
     - 自动化脚本: advanced/automation-scripts.md
   #   - VPN设置: advanced/vpn-setup.md
   #   - SSL证书: advanced/ssl-certificates.md
-  - 常见问题: troubleshooting.md
+  # - 常见问题: troubleshooting.md
+  - 关于: about.md
 # theme: readthedocs
 theme:
   name: material
