@@ -9,11 +9,11 @@ services:
       - TZ=Asia/Shanghai
       - SETTINGS_ENCRYPTION_KEY=
       - CLI_ARGS= #optional
-      - DUPLICATI__WEBSERVICE_PASSWORD= #optional
+      - DUPLICATI__WEBSERVICE_PASSWORD=changeme #optional
     volumes:
       - ./config:/config
-      - ./backups:/backups
-      - ./source:/source
+      - /duplicati_backups:/backups
+      - ~:/source
     ports:
       - 8200:8200
     restart: unless-stopped
