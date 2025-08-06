@@ -81,6 +81,10 @@ docker run -d \
   -p 3000:3000 \
   -v ./config:/config \
   jxxghp/moviepilot-v2:latest
+
+
+# speedtest
+docker run -p 80:8080 -d --name speedtest ghcr.io/librespeed/speedtest
 ```
 
 
