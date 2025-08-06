@@ -14,31 +14,13 @@ F:\ME2\docker_ws
 
 
 
-glances
-Uptime Kuma
+TODO:
+电子书转换为有声书
+AudioBookShelf
+Audiobook Maker
+<https://nasdaddy.com/how-to-install-audiobookshelf-on-your-nas/>
+<https://nasdaddy.com/how-to-make-audiobook-yourself-on-your-nas/>
 
-portainer
-filebrowser
-Watchtower
+改为名文链接
 
-frp
-<https://hub.docker.com/r/linuxserver/duplicati>
-
-Aria2-Pro
-metube
-
-navidrome
-Music-tag-web
-stash
-Metatube
-immich
-
-dashy
-homarr
-homepage
-
-
-gitlab
-gitea
-wiki
-Syncclipboard
+统计不用登录的服务
