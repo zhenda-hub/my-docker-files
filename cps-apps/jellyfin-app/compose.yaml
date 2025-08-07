@@ -30,3 +30,5 @@ services:
       - 'host.docker.internal:host-gateway'
     devices:
       - /dev/dri:/dev/dri
+    group_add:
+      - '122' # Change this to match your "render" host group id and remove this comment
