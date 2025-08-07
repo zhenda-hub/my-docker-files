@@ -314,15 +314,9 @@ ls -la /dev/dri/
 getent group render | cut -d: -f3
 getent group video | cut -d: -f3
 getent group input | cut -d: -f3
-```
 
-```bash
-sudo chmod -R 755 /dev/dri
 sudo usermod -aG video jellyfin
-
-
 sudo usermod -aG render jellyfin  # 将 Jellyfin 用户加入 render 组
-sudo chmod 666 /dev/dri/renderD128
 
 
 ```
