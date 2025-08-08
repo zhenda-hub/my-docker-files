@@ -123,6 +123,11 @@ docker compose up -d
 | 插件生态  | ⭐⭐       | ⭐⭐⭐    | ⭐⭐⭐⭐     |
 | 多平台支持 | ✅        | ✅      | ✅        |
 
+
+由于致命的播放器错误，播放失败。 FFmpeg exited with code 187
+
+手机流畅播放 需要转码
+
 ---
 
 ## 🔗 扩展资源推荐
@@ -140,13 +145,11 @@ docker compose up -d
 
 
 
+TODO:
+错误记录
 
 
-能力	是否可实现
-多清晰度转码	✅ 可以，手动或实时转码
-自适应播放	✅ Jellyfin 有部分 ABR 能力，但体验不如 YouTube
-CDN 支持	❌ 没有全球节点，只有你本地的设备
-兼容性优化	✅ 但需要一定的配置和硬件（如硬件加速）
+
 
 
 
@@ -154,147 +157,14 @@ CDN 支持	❌ 没有全球节点，只有你本地的设备
 结果：占用带宽更低，兼容性更好，播放更流畅！
 
 
-
-Jellyfin 硬件加速配置
-1. 检查硬件支持
-```bash
-# 检查集成显卡设备
-ls -la /dev/dri/
-# 应该能看到类似 renderD128 的设备
-
-# 查看显卡信息
-lspci | grep VGA
-# 或
-sudo lshw -c display
-```
-1. Docker 配置（推荐）
-```yaml
-# docker-compose.yml
-version: "3.8"
-services:
-  jellyfin:
-    image: jellyfin/jellyfin:latest
-    container_name: jellyfin
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Asia/Shanghai
-    volumes:
-      - ./config:/config
-      - ./cache:/cache
-      - /path/to/your/videos:/media
-    ports:
-      - "8096:8096"
-    # 关键：映射GPU设备
-    devices:
-      - /dev/dri/renderD128:/dev/dri/renderD128
-      - /dev/dri/card0:/dev/dri/card0
-    restart: unless-stopped
-```
-
-1. Jellyfin 内部设置
-访问 http://your-nas-ip:8096，进入管理界面：
-
-Intel Quick Sync Video (QSV)：专门用于视频编解码加速
-
-管理 → 转码 → 硬件加速：
-✅ 启用硬件解码：选择 "Video Acceleration API (VAAPI)"
-✅ 启用硬件编码：选择 "Video Acceleration API (VAAPI)"
-✅ 硬件解码选择：H264, HEVC, VP9
-✅ 硬件编码选择：H264, HEVC
-性能优化配置
-1. 系统级优化
-```bash
-# 确保用户在render组中
-sudo usermod -a -G render $USER
-
-# 检查GPU权限
-ls -la /dev/dri/
-# 应该显示render组权限
-```
-
-2. 针对N150的转码设置
-```json
-// Jellyfin 转码设置建议
-{
-  "EnableHardwareDecoding": true,
-  "HardwareDecodingCodecs": ["h264", "hevc", "vp9"],
-  "EnableHardwareEncoding": true,
-  "HardwareEncodingCodecs": ["h264", "hevc"],
-  "H264Crf": 23,          // 质量设置：23是较好的平衡点
-  "MaxMuxingQueueSize": 2048,
-  "EnableThrottling": false,
-  "EnableSegmentDeletion": true
-}
-```
-3. 内存和缓存优化
-```yaml
-# docker-compose.yml 添加内存限制
-services:
-  jellyfin:
-    deploy:
-      resources:
-        limits:
-          memory: 2G      # N150配置通常内存有限
-        reservations:
-          memory: 512M
-    # 使用SSD作为转码缓存目录
-    volumes:
-      - /path/to/ssd:/config/transcodes  # 临时转码文件
-      - /path/to/hdd:/media             # 媒体库
-```
+硬件加速配置
 
 
-```bash
-# 安装 VAAPI 支持库
-sudo apt install libva-glx2 libva-drm2 libva-x11-2 libva-dev
-#  检查 VAAPI 驱动是否安装成功
-vainfo
-```
+1. 安装gpu驱动
+2. 查看驱动组的id
+3. gpu驱动绑定到容器
+4. 给compose文件添加驱动组， 获得访问权限
 
-
-
-启用硬件转码
-
-检查 VAAPI 是否生效：
-
-1. 登录 Jellyfin Web 后台
-2. 播放 4K 视频 → 点“管理面板”（右上角）
-3. 查看 播放信息：
-- 显示为 Direct Play → 说明未转码
-- 显示为 Transcode (VAAPI) → ✅ 成功启用
-- 显示为 Transcode (ffmpeg) → ❌ 仍用软件转码
-
-
-HandBrake 开启预转码, 不要实时转码
-
-```bash
-
-# iPerf, 在NAS和播放设备间测试带宽
-iperf3 -s  # NAS上运行服务端
-iperf3 -c nas-ip
-
-```
-
-
-Chrome或Edge，并启用硬件加速（浏览器设置 > 系统 > 使用硬件加速）。
-
-增加缓存大小（设置 > 高级 > 缓存），确保视频预加载更多数据。
-
-
-
-
-
-
- 
-由于致命的播放器错误，播放失败。 FFmpeg exited with code 187
-
-
-手机流畅播放 需要转吗
-
-加速类型
-QSV
-VAAPI
 
 
 ```bash
@@ -321,14 +191,9 @@ sudo usermod -aG render jellyfin  # 将 Jellyfin 用户加入 render 组
 
 ```
 
-启用硬件解码：全部勾选
-启用硬件编码：只勾选H.264（N150的H.265编码能力有限）
 
 
 
 
-<https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/intel/#configure-with-linux-virtualization>
-<https://dgpu-docs.intel.com/driver/client/overview.html>
-
-用 QSV 和 jellyfin-ffmpeg
-
+- <https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/intel/#configure-with-linux-virtualization>
+- <https://dgpu-docs.intel.com/driver/client/overview.html>
