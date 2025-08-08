@@ -9,11 +9,10 @@ services:
       - ./downloads:/downloads
       - ./cookies:/cookies
     environment:
+  
       OUTPUT_TEMPLATE: >-
+        %(playlist_title&Playlist |)s%(playlist_title|)s%(playlist_uploader& by |)s%(playlist_uploader|)s%(playlist_autonumber& - |)s%(playlist_autonumber|)s%(playlist_count& of |)s%(playlist_count|)s%(playlist_autonumber& - |)s%(uploader,creator|UNKNOWN_AUTHOR)s - %(title|UNKNOWN_TITLE)s - %(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|UNKNOWN_DATE)s.%(ext)s
         %(playlist_title&Playlist |)S%(playlist_title|)S%(playlist_uploader& by |)S%(playlist_uploader|)S%(playlist_autonumber& - |)S%(playlist_autonumber|)S%(playlist_count& of |)S%(playlist_count|)S%(playlist_autonumber& - |)S%(uploader,creator|UNKNOWN_AUTHOR)S - %(title|UNKNOWN_TITLE)S - %(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|UNKNOWN_DATE)S.%(ext)s
-        %(uploader)s/%(upload_date>%Y-%m-%d|)s%(upload_date& - |)s%(title)s.%(ext)s
-        %(uploader)s/%(upload_date)s - %(title)s [%(id)s].%(ext)s
-        %(title)s [%(upload_date)s].%(ext)s
         
         
       YTDL_OPTIONS: >-
