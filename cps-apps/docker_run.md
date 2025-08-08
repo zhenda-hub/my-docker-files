@@ -46,6 +46,7 @@ docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n
 # filebrowser
 
 docker run \
+    --name filebrowser \
     -v ~/Documents/ds_ws:/srv \
     -v ./filebrowser.db:/database/filebrowser.db \
     -v ./settings.json:/config/settings.json \
