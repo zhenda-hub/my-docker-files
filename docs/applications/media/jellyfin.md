@@ -328,5 +328,7 @@ sudo usermod -aG render jellyfin  # 将 Jellyfin 用户加入 render 组
 
 
 <https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/intel/#configure-with-linux-virtualization>
+<https://dgpu-docs.intel.com/driver/client/overview.html>
 
 用 QSV 和 jellyfin-ffmpeg
+
