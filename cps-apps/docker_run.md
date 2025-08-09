@@ -74,7 +74,7 @@ docker run -d \
   registry.cn-beijing.aliyuncs.com/caorushizi/mediago:v3.0.0
 
 # dashy
-docker run -p 8080:8080 lissy93/dashy
+docker run --name dashy -p 8098:8080 lissy93/dashy
 
 # mp
 docker run -d \
