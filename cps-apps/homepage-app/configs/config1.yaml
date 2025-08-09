@@ -1,0 +1,55 @@
+# Homepage 配置
+title: "我的 NAS 首页"  # 首页标题
+subtitle: "NAS 资源管理与控制中心"  # 页面副标题
+
+# 网站配色方案
+colors:
+  primary: "#4CAF50"  # 绿色
+  secondary: "#ffffff"  # 白色
+
+# 导航菜单
+navigation:
+  - title: "文件管理"
+    url: "/file-manager"
+  - title: "下载中心"
+    url: "/downloads"
+  - title: "资源监控"
+    url: "/system-monitor"
+  - title: "媒体播放器"
+    url: "/media-player"
+  - title: "设置"
+    url: "/settings"
+
+# 页面内容
+sections:
+  - title: "欢迎使用我的 NAS"
+    content: |
+      这是一个集成了多个功能的 NAS 首页，你可以快速访问文件、控制下载、查看系统状态等。
+  
+  - title: "系统监控"
+    content: |
+      - CPU 使用率: 75%
+      - 内存使用率: 65%
+      - 磁盘空间: 200GB / 500GB
+  
+  - title: "快速链接"
+    content: |
+      - [文件管理](#file-manager)
+      - [下载中心](#downloads)
+      - [媒体播放器](#media-player)
+  
+  - title: "社交媒体"
+    content: |
+      - [GitHub](https://github.com)
+      - [LinkedIn](https://www.linkedin.com)
+  
+  - title: "常用工具"
+    content: |
+      - [文件搜索](#file-search)
+      - [图像查看器](#image-viewer)
+      - [视频播放器](#video-player)
+  
+# 页脚信息
+footer:
+  - text: "© 2025 我的 NAS 系统"
+  - link: "https://github.com/gethomepage/homepage"

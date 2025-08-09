@@ -1,0 +1,313 @@
+# ===========================================
+# settings.yaml - 基础设置
+# ===========================================
+---
+title: 我的NAS控制台
+favicon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/nas.png
+theme: dark
+color: slate
+target: _blank
+
+layout:
+  媒体服务:
+    style: row
+    columns: 3
+  下载工具:
+    style: row  
+    columns: 4
+  系统管理:
+    style: row
+    columns: 3
+  网络工具:
+    style: row
+    columns: 3
+
+# ===========================================
+# services.yaml - 服务配置
+# ===========================================
+---
+- 媒体服务:
+    - Plex媒体服务器:
+        icon: plex.png
+        href: http://192.168.1.100:32400
+        description: 流媒体服务器
+        widget:
+          type: plex
+          url: http://192.168.1.100:32400
+          key: YOUR_PLEX_TOKEN
+
+    - Jellyfin:
+        icon: jellyfin.png
+        href: http://192.168.1.100:8096
+        description: 开源媒体中心
+        widget:
+          type: jellyfin
+          url: http://192.168.1.100:8096
+          username: admin
+          password: YOUR_PASSWORD
+
+    - Emby:
+        icon: emby.png
+        href: http://192.168.1.100:8920
+        description: 媒体服务器
+        widget:
+          type: emby
+          url: http://192.168.1.100:8920
+          key: YOUR_EMBY_KEY
+
+- 下载工具:
+    - qBittorrent:
+        icon: qbittorrent.png
+        href: http://192.168.1.100:8080
+        description: BT下载客户端
+        widget:
+          type: qbittorrent
+          url: http://192.168.1.100:8080
+          username: admin
+          password: YOUR_PASSWORD
+
+    - Transmission:
+        icon: transmission.png
+        href: http://192.168.1.100:9091
+        description: 轻量级BT客户端
+        widget:
+          type: transmission
+          url: http://192.168.1.100:9091
+          username: admin
+          password: YOUR_PASSWORD
+
+    - Aria2:
+        icon: aria2.png
+        href: http://192.168.1.100:6800
+        description: 多协议下载工具
+        widget:
+          type: aria2
+          url: http://192.168.1.100:6800
+
+    - YouTube-DL:
+        icon: youtubedl.png
+        href: http://192.168.1.100:17442
+        description: 视频下载工具
+        widget:
+          type: tube-archivist
+          url: http://192.168.1.100:17442
+          key: YOUR_API_KEY
+
+- 系统管理:
+    - Portainer:
+        icon: portainer.png
+        href: http://192.168.1.100:9000
+        description: Docker容器管理
+        widget:
+          type: portainer
+          url: http://192.168.1.100:9000
+          env: 1
+          key: YOUR_PORTAINER_TOKEN
+
+    - Netdata:
+        icon: netdata.png
+        href: http://192.168.1.100:19999
+        description: 系统监控
+        widget:
+          type: netdata
+          url: http://192.168.1.100:19999
+
+    - Grafana:
+        icon: grafana.png
+        href: http://192.168.1.100:3000
+        description: 数据可视化
+        widget:
+          type: grafana
+          url: http://192.168.1.100:3000
+          username: admin
+          password: YOUR_PASSWORD
+
+- 网络工具:
+    - Pi-hole:
+        icon: pihole.png
+        href: http://192.168.1.100:8081
+        description: 网络广告拦截
+        widget:
+          type: pihole
+          url: http://192.168.1.100:8081
+          key: YOUR_PIHOLE_API_TOKEN
+
+    - Nginx Proxy Manager:
+        icon: nginx-proxy-manager.png
+        href: http://192.168.1.100:8181
+        description: 反向代理管理
+        widget:
+          type: npm
+          url: http://192.168.1.100:8181
+          username: admin@example.com
+          password: YOUR_PASSWORD
+
+    - AdGuard Home:
+        icon: adguardhome.png
+        href: http://192.168.1.100:3001
+        description: 网络广告拦截器
+        widget:
+          type: adguard
+          url: http://192.168.1.100:3001
+          username: admin
+          password: YOUR_PASSWORD
+
+# ===========================================
+# widgets.yaml - 小部件配置
+# ===========================================
+---
+- resources:
+    backend: resources
+    expanded: true
+    cpu: true
+    memory: true
+    disk: /
+
+- search:
+    provider: google
+    target: _blank
+
+- datetime:
+    text_size: xl
+    locale: zh-CN
+
+- greeting:
+    text_size: xl
+    text: "欢迎回到你的NAS！"
+
+- weather:
+    latitude: 39.9042
+    longitude: 116.4074
+    provider: openweathermap
+    apiKey: YOUR_OPENWEATHER_API_KEY
+    cache: 5
+
+# ===========================================
+# bookmarks.yaml - 书签配置
+# ===========================================
+---
+- 开发工具:
+    - GitHub:
+        - icon: github.png
+          href: https://github.com
+    - GitLab:
+        - icon: gitlab.png
+          href: https://gitlab.com
+    - Docker Hub:
+        - icon: docker.png  
+          href: https://hub.docker.com
+
+- 娱乐:
+    - YouTube:
+        - icon: youtube.png
+          href: https://youtube.com
+    - Netflix:
+        - icon: netflix.png
+          href: https://netflix.com
+    - Spotify:
+        - icon: spotify.png
+          href: https://spotify.com
+
+- 工具网站:
+    - Speedtest:
+        - icon: speedtest.png
+          href: https://speedtest.net
+    - IP查询:
+        - icon: whatismyipaddress.png
+          href: https://whatismyipaddress.com
+
+# ===========================================
+# docker-compose.yaml - 部署配置
+# ===========================================
+---
+version: "3.3"
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    environment:
+      PUID: 1000
+      PGID: 1000
+    ports:
+      - 3000:3000
+    volumes:
+      - ./config:/app/config # 配置文件目录
+      - /var/run/docker.sock:/var/run/docker.sock:ro # Docker监控（可选）
+      - /:/host/root:ro # 系统资源监控（可选）
+    restart: unless-stopped
+
+# ===========================================
+# 自定义CSS (custom.css) - 样式优化
+# ===========================================
+---
+/* 放置在 config/custom.css */
+
+/* 主题色彩调整 */
+:root {
+  --color-50: 248 250 252;
+  --color-100: 241 245 249;
+  --color-200: 226 232 240;
+  --color-300: 203 213 225;
+  --color-400: 148 163 184;
+  --color-500: 100 116 139;
+  --color-600: 71 85 105;
+  --color-700: 51 65 85;
+  --color-800: 30 41 59;
+  --color-900: 15 23 42;
+}
+
+/* 卡片样式优化 */
+.service-card {
+  backdrop-filter: blur(10px);
+  background: rgba(30, 41, 59, 0.8) !important;
+  border: 1px solid rgba(71, 85, 105, 0.3);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border-color: rgba(100, 116, 139, 0.5);
+}
+
+/* 标题样式 */
+.service-title {
+  font-weight: 600;
+  color: rgba(248, 250, 252, 0.9);
+}
+
+/* 描述文字 */
+.service-description {
+  color: rgba(203, 213, 225, 0.8);
+  font-size: 0.85rem;
+}
+
+/* 状态指示器 */
+.status-online {
+  color: #10b981;
+}
+
+.status-offline {
+  color: #ef4444;
+}
+
+/* 小部件样式 */
+.widget-container {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(51, 65, 85, 0.9) 100%);
+  border-radius: 10px;
+  border: 1px solid rgba(71, 85, 105, 0.3);
+}
+
+/* 搜索框样式 */
+.search-container input {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(71, 85, 105, 0.3);
+  border-radius: 8px;
+  color: rgba(248, 250, 252, 0.9);
+}
+
+.search-container input:focus {
+  border-color: rgba(100, 116, 139, 0.6);
+  box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.1);
+}
