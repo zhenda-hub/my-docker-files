@@ -12,7 +12,7 @@ services:
       - DUPLICATI__WEBSERVICE_PASSWORD=changeme #optional
     volumes:
       - ./config:/config
-      - ~/Documents/duplicati_backups:/backups
+      - ./backups:/backups
       - ~/Documents/ds_ws:/source
     ports:
       - 8200:8200
