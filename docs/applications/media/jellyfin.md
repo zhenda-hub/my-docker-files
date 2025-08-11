@@ -85,13 +85,47 @@ docker compose up -d
 
 ### ✅ 硬件转码支持
 
-如你播放高码率 4K HEVC 视频，建议开启转码：
 
-* Intel CPU：Quick Sync Video
-* NVIDIA GPU：支持 NVENC
-* AMD GPU：部分支持 VAAPI
 
-设置路径：**管理后台 → 播放 → 硬件加速设置**
+转码（Transcoding） = 把视频的“编码格式 / 分辨率 / 码率”转为设备更容易播放的形式。
+结果：占用带宽更低，兼容性更好，播放更流畅！
+
+- <https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/intel/#configure-with-linux-virtualization>
+- <https://dgpu-docs.intel.com/driver/client/overview.html>
+
+播放高码率 4K HEVC 视频，建议开启转码：
+
+1. 安装gpu驱动
+2. 查看驱动组的id
+3. gpu驱动绑定到容器
+4. 给compose文件添加驱动组， 获得访问权限
+
+
+
+```bash
+# 查看是否支持硬件解码
+ls /dev/dri
+
+```
+
+```bash
+
+# 检查GPU权限
+ls -la /dev/dri/
+# 应该显示render组权限
+
+
+# 查询组id
+getent group render | cut -d: -f3
+getent group video | cut -d: -f3
+getent group input | cut -d: -f3
+
+sudo usermod -aG video jellyfin
+sudo usermod -aG render jellyfin  # 将 Jellyfin 用户加入 render 组
+
+```
+
+
 
 ---
 
@@ -124,9 +158,14 @@ docker compose up -d
 | 多平台支持 | ✅        | ✅      | ✅        |
 
 
-由于致命的播放器错误，播放失败。 FFmpeg exited with code 187
+### Q5: 由于致命的播放器错误，播放失败。 FFmpeg exited with code 187
 
-手机流畅播放 需要转码
+没有把gpu共享给容器, compose.yaml 中配置
+
+```yaml
+devices:
+      - /dev/dri:/dev/dri
+```
 
 ---
 
@@ -140,60 +179,3 @@ docker compose up -d
   * `Jellyfin MetaData`：改进元数据刮削
   * `Jellyfin Plugin Repositories`：第三方插件源
   * `AniDB / OpenSubtitles`：动漫 / 字幕支持
-
----
-
-
-
-TODO:
-错误记录
-
-
-
-
-
-
-转码（Transcoding） = 把视频的“编码格式 / 分辨率 / 码率”转为设备更容易播放的形式。
-结果：占用带宽更低，兼容性更好，播放更流畅！
-
-
-硬件加速配置
-
-
-1. 安装gpu驱动
-2. 查看驱动组的id
-3. gpu驱动绑定到容器
-4. 给compose文件添加驱动组， 获得访问权限
-
-
-
-```bash
-# 查看是否支持硬件解码
-ls /dev/dri
-
-```
-
-```bash
-
-# 检查GPU权限
-ls -la /dev/dri/
-# 应该显示render组权限
-
-
-# 查询组id
-getent group render | cut -d: -f3
-getent group video | cut -d: -f3
-getent group input | cut -d: -f3
-
-sudo usermod -aG video jellyfin
-sudo usermod -aG render jellyfin  # 将 Jellyfin 用户加入 render 组
-
-
-```
-
-
-
-
-
-- <https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/intel/#configure-with-linux-virtualization>
-- <https://dgpu-docs.intel.com/driver/client/overview.html>
