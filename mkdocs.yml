@@ -26,7 +26,6 @@ nav:
       - Speedtest 网络测速: applications/system/speedtest.md
       - FileBrowser 文件浏览: applications/system/filebrowser.md
       - Duplicati 备份工具: applications/system/duplicati.md
-      - Restic 备份工具: applications/system/restic.md
       - Frp 内网穿透: applications/system/frp.md
     - 下载工具:
       - metube 下载中心: applications/download/metube.md
