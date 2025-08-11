@@ -86,6 +86,10 @@ docker run -d \
 
 # speedtest
 docker run -p 80:8080 -d --name speedtest ghcr.io/librespeed/speedtest
+
+# prometheus
+docker run --name prometheus -d -p 9090:9090 prom/prometheus
+
 ```
 
 
