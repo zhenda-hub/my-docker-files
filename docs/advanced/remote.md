@@ -129,8 +129,9 @@
 
 ## 📚 延伸阅读
 
-* [Tailscale 官方文档](https://tailscale.com/kb/)
-* [WireGuard 官网](https://www.wireguard.com/)
-* [Cloudflare DDNS 教程](https://developers.cloudflare.com)
-* [Nginx Proxy Manager（可视化反向代理）](https://nginxproxymanager.com/)
-* [家庭 NAS 安全指南](./nas_security_guide.md)
+* Tailscale 官方文档: [https://tailscale.com/kb/](https://tailscale.com/kb/)
+* WireGuard 官网:     [https://www.wireguard.com/](https://www.wireguard.com/)
+* openvpn文档:        [https://openvpn.net/community-docs/index.html?lang=en/](https://openvpn.net/community-docs/index.html?lang=en/)
+* Cloudflare DDNS 教程: [https://developers.cloudflare.com](https://developers.cloudflare.com)
+* Nginx Proxy Manager: [https://nginxproxymanager.com/](https://nginxproxymanager.com/)
+* [家庭 NAS 安全指南](./security.md)
