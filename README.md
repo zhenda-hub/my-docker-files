@@ -13,6 +13,7 @@ F:\ME2\docker_ws
 
 
 
+为nas爱好者,写一个 xxxx文档. 以可复制的markdown文件输出. 放进 MkDocs 博客
 
 TODO:
 电子书转换为有声书
@@ -24,6 +25,23 @@ Audiobook Maker
 
 改为名文链接
 
-统计不用登录的服务
+不用登录
 
-为nas爱好者,写一个 xxxx文档. 以可复制的markdown文件输出. 放进 MkDocs 博客
+glances
+speedtest
+metube
+
+
+
+登录
+stash
+portainer
+homarr
+filebrowser
+
+duplicati
+aria2-pro
+music-tag-web
+jellyfin
+navidrome
+immich
