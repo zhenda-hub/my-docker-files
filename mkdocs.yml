@@ -22,6 +22,7 @@ nav:
     - 系统工具:
       - Portainer 控制面板: applications/system/portainer.md
       - Glances 系统状态: applications/system/glances.md
+      - Netdata 系统状态: applications/system/netdata.md
       - Uptime Kuma 服务监控: applications/system/uptime-kuma.md
       - Speedtest 网络测速: applications/system/speedtest.md
       - FileBrowser 文件浏览: applications/system/filebrowser.md
@@ -56,7 +57,7 @@ nav:
     - 远程访问: advanced/remote.md
     - 安全设置: advanced/security.md
     - 高可用策略: advanced/high-availability.md
-    - 自动化脚本: advanced/automation-scripts.md
+    # - 自动化脚本: advanced/automation-scripts.md
   #   - VPN设置: advanced/vpn-setup.md
   #   - SSL证书: advanced/ssl-certificates.md
   # - 常见问题: troubleshooting.md
