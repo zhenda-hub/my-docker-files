@@ -11,6 +11,13 @@ Duplicati 是一款开源的跨平台备份工具，支持增量备份、加密�
 官网：[https://www.duplicati.com](https://www.duplicati.com)
 
 ---
+## 特点
+- 支持AES-256加密
+- 增量备份
+- 支持多种云存储后端
+- Web界面管理
+
+---
 
 ## 🚀 安装方式
 
@@ -70,6 +77,24 @@ services:
 5. 保存并运行
 
 ---
+## 设置远程访问
+```bash
+# 使用 nano 编辑配置文件
+nano /etc/default/duplicati
+
+# 把配置文件中的 DAEMON_OPTS 所在的行替换成下面这行内容。
+# webservice-interface 参数为 any 表示任意接口都可以访问 duplicati 服务。
+# webservice-port 参数为 8200，表示 Web 服务访问端口，如果需要改成其他端口，可以在这里修改。
+DAEMON_OPTS="--webservice-interface=any --webservice-port=8200 --portable-mode"
+```
+
+---
+## 🔁 自动化建议
+
+* 使用 `duplicati` + `rclone` 实现“本地 + 云端”双重备份
+* 本地不同磁盘备份 + 云盘(异地设备)备份
+
+---
 
 ## 💬 常见问题
 
@@ -83,19 +108,16 @@ services:
 
 ---
 
-## 🔁 自动化建议
-
-* 使用 `duplicati` + `rclone` 实现“本地 + 云端”双重备份
-* 设置定期校验备份完整性（内置支持）
-* 使用 `watchtower` 自动更新 Duplicati 镜像（高级）
-
----
-
 ## 🔗 扩展资源
 
 * 官方文档：[https://duplicati.readthedocs.io](https://duplicati.readthedocs.io)
 * 备份策略建议：[https://duplicati.readthedocs.io/en/latest/04-using-duplicati/03-backup-retention/](https://duplicati.readthedocs.io/en/latest/04-using-duplicati/03-backup-retention/)
 * 社区论坛：[https://forum.duplicati.com](https://forum.duplicati.com)
+- <https://hub.docker.com/r/linuxserver/duplicati>
+- <https://docs.linuxserver.io/images/docker-duplicati/#ports-p>
+- <https://docs.duplicati.com/detailed-descriptions/using-duplicati-from-docker>
+- <https://docs.duplicati.com/getting-started/set-up-a-backup-in-the-ui#source-data>
+- <https://nasdaddy.com/how-to-install-duplicati-on-your-nas/>
 
 ---
 
@@ -103,34 +125,4 @@ services:
 
 
 
-## 特点
-- 支持AES-256加密
-- 增量备份
-- 支持多种云存储后端
-- Web界面管理
-
-<https://hub.docker.com/r/linuxserver/duplicati>
-<https://docs.linuxserver.io/images/docker-duplicati/#ports-p>
-<https://docs.duplicati.com/detailed-descriptions/using-duplicati-from-docker>
-
-<https://nasdaddy.com/how-to-install-duplicati-on-your-nas/>
-
-
-## 设置远程访问
-```bash
-# 使用 nano 编辑配置文件
-nano /etc/default/duplicati
-
-# 把配置文件中的 DAEMON_OPTS 所在的行替换成下面这行内容。
-# webservice-interface 参数为 any 表示任意接口都可以访问 duplicati 服务。
-# webservice-port 参数为 8200，表示 Web 服务访问端口，如果需要改成其他端口，可以在这里修改。
-DAEMON_OPTS="--webservice-interface=any --webservice-port=8200 --portable-mode"
-```
-
-
-本地备份 + 云盘(异地设备)备份
-
-
-## 云盘选择
-...
 
