@@ -14,3 +14,11 @@ casaos-uninstall
 # look compose files
 ll /var/lib/casaos/apps
 ```
+
+
+
+
+
+旧应用程序 (待重建)
+
+docker run d app
