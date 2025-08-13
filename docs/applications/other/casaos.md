@@ -34,3 +34,4 @@ xiezai hou, peizhi dou qingling le
 
 
 
+immich-postgres is unhealthy
