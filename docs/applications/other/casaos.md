@@ -13,6 +13,12 @@ casaos-uninstall
 ```bash
 # look compose files
 ll /var/lib/casaos/apps
+
+
+
+/DATA/AppData/
+
+/DATA/
 ```
 
 
@@ -22,3 +28,9 @@ ll /var/lib/casaos/apps
 旧应用程序 (待重建)
 
 docker run d app
+
+xiezai hou, peizhi dou qingling le
+
+
+
+
