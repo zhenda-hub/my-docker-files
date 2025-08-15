@@ -1,0 +1,160 @@
+name: immich
+services:
+    database:
+        cpu_shares: 90
+        command:
+            - postgres
+            - -c
+            - shared_preload_libraries=vectors.so
+            - -c
+            - search_path="$user", public, vectors
+            - -c
+            - logging_collector=on
+            - -c
+            - max_wal_size=2GB
+            - -c
+            - shared_buffers=512MB
+            - -c
+            - wal_compression=on
+        container_name: immich_postgres
+        deploy:
+            resources:
+                limits:
+                    memory: "8058306560"
+        environment:
+            POSTGRES_DB: immich
+            POSTGRES_INITDB_ARGS: --data-checksums
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_USER: postgres
+        hostname: immich_postgres
+        healthcheck:
+            test:
+                - CMD-SHELL
+                - pg_isready --dbname="${POSTGRES_DB}" --username="${POSTGRES_USER}" || exit 1; Chksum="$(psql --dbname="${POSTGRES_DB}" --username="${POSTGRES_USER}" --tuples-only --no-align --command='SELECT COALESCE(SUM(checksum_failures), 0) FROM pg_stat_database')"; echo "checksum failure count is $Chksum"; [ "$Chksum" = '0' ] || exit 1
+            interval: 5m0s
+            start_period: 5m0s
+            start_interval: 30s
+        image: docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0@sha256:90724186f0a3517cf6914295b5ab410db9ce23190a2d9d0b9dd6463e3fa298f0
+        networks:
+            default: null
+        ports:
+            - mode: ingress
+              target: 5432
+              published: "5432"
+              protocol: tcp
+        restart: always
+        volumes:
+            - type: bind
+              source: /home/zhenda/Documents/ds_ws/immich-app/postgres
+              target: /var/lib/postgresql/data
+              bind:
+                create_host_path: true
+    immich-machine-learning:
+        cpu_shares: 90
+        command: []
+        container_name: immich_machine_learning
+        deploy:
+            resources:
+                limits:
+                    memory: "8058306560"
+        environment:
+            DB_DATA_LOCATION: ./postgres
+            DB_DATABASE_NAME: immich
+            DB_PASSWORD: postgres
+            DB_USERNAME: postgres
+            IMMICH_VERSION: release
+            UPLOAD_LOCATION: ./library
+        env_file:
+            - /home/zhenda/Documents/ds_ws/immich-app/.env
+        hostname: immich_machine_learning
+        healthcheck: {}
+        image: ghcr.io/immich-app/immich-machine-learning:release
+        networks:
+            default: null
+        restart: always
+        volumes:
+            - type: volume
+              source: model-cache
+              target: /cache
+              volume: {}
+    immich-server:
+        cpu_shares: 90
+        command: []
+        container_name: immich_server
+        depends_on:
+            database:
+                condition: service_started
+                required: true
+            redis:
+                condition: service_started
+                required: true
+        deploy:
+            resources:
+                limits:
+                    memory: "8058306560"
+        environment:
+            DB_DATA_LOCATION: ./postgres
+            DB_DATABASE_NAME: immich
+            DB_PASSWORD: postgres
+            DB_USERNAME: postgres
+            IMMICH_VERSION: release
+            UPLOAD_LOCATION: ./library
+        env_file:
+            - /home/zhenda/Documents/ds_ws/immich-app/.env
+        hostname: immich_server
+        healthcheck: {}
+        image: ghcr.io/immich-app/immich-server:release
+        networks:
+            default: null
+        ports:
+            - mode: ingress
+              target: 2283
+              published: "2283"
+              protocol: tcp
+        restart: always
+        volumes:
+            - type: bind
+              source: /home/zhenda/Documents/ds_ws/immich-app/library
+              target: /usr/src/app/upload
+              bind:
+                create_host_path: true
+            - type: bind
+              source: /etc/localtime
+              target: /etc/localtime
+              read_only: true
+              bind:
+                create_host_path: true
+    redis:
+        cpu_shares: 90
+        command: []
+        container_name: immich_redis
+        deploy:
+            resources:
+                limits:
+                    memory: "8058306560"
+        hostname: immich_redis
+        healthcheck:
+            test:
+                - CMD-SHELL
+                - redis-cli ping || exit 1
+        image: docker.io/redis:6.2-alpine@sha256:905c4ee67b8e0aa955331960d2aa745781e6bd89afc44a8584bfd13bc890f0ae
+        networks:
+            default: null
+        restart: always
+networks:
+    default:
+        name: immich_default
+volumes:
+    model-cache:
+        name: immich_model-cache
+x-casaos:
+    author: self
+    category: self
+    hostname: ""
+    icon: ""
+    index: /
+    is_uncontrolled: true
+    port_map: "2283"
+    scheme: http
+    title:
+        custom: immich
