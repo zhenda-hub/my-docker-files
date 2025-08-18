@@ -23,7 +23,7 @@ nav:
       - Portainer 控制面板: applications/system/portainer.md
       - Glances 系统状态: applications/system/glances.md
       - Netdata 系统状态: applications/system/netdata.md
-      - Uptime Kuma 服务监控: applications/system/uptime-kuma.md
+      # - Uptime Kuma 服务监控: applications/system/uptime-kuma.md
       - Speedtest 网络测速: applications/system/speedtest.md
       - FileBrowser 文件浏览: applications/system/filebrowser.md
       - Duplicati 备份工具: applications/system/duplicati.md
@@ -46,9 +46,9 @@ nav:
     #   - 密码管理: applications/productivity/password-manager.md
     - 其他工具:
       - Homer: applications/other/homer.md
-      - Homepage: applications/other/homepage.md
-      - Dashy: applications/other/dashy.md
-      - Nextcloud: applications/productivity/nextcloud.md
+      # - Homepage: applications/other/homepage.md
+      # - Dashy: applications/other/dashy.md
+      - Nextcloud: applications/other/nextcloud.md
       - cloudreve 私有云: applications/other/cloudreve.md
       - CasaOS: applications/other/casaos.md
   - 进阶配置: 
