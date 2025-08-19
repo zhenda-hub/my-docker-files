@@ -100,6 +100,15 @@ http://服务器IP:61208
 
 ---
 
+## 扩展资源
+
+- 官网: [https://nicolargo.github.io/glances](https://nicolargo.github.io/glances)
+- GitHub 仓库: [https://github.com/nicolargo/glances](https://github.com/nicolargo/glances)
+- Docker Hub 镜像: [https://hub.docker.com/r/nicolargo/glances](https://hub.docker.com/r/nicolargo/glances)
+- 文档: [https://glances.readthedocs.io](https://glances.readthedocs.io)
+
+---
+
 ## 总结
 
 Glances 是一款非常适合 NAS 爱好者的 **系统资源监控工具**。

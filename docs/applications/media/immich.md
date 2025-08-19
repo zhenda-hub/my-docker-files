@@ -98,6 +98,15 @@ services:
 
 ---
 
+
+## 扩展资源
+
+- 官网: [https://immich.app](https://immich.app)
+- GitHub 仓库: [https://github.com/immich-app/immich](https://github.com/immich-app/immich)
+- 文档: [https://immich.app/docs](https://immich.app/docs)
+
+---
+
 ## 总结
 
 Immich 为 NAS 爱好者提供了一个优秀的 **照片与视频集中管理方案**。
