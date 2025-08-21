@@ -39,6 +39,7 @@ nav:
       - Immich: applications/media/immich.md
       - Navidrome: applications/media/navidrome.md
       - Music-tag-web: applications/media/music-tag-web.md
+      - Komga: applications/media/komga.md
     # - 生产力工具:
     #   - GitLab: applications/productivity/gitlab.md
     #   - Gitea: applications/productivity/gitea.md
