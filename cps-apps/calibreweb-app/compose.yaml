@@ -1,0 +1,36 @@
+services:
+  calibre-web:
+    image: lscr.io/linuxserver/calibre-web:latest
+    container_name: calibre-web2
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+      - DOCKER_MODS=linuxserver/mods:universal-calibre #optional
+      - OAUTHLIB_RELAX_TOKEN_SCOPE=1 #optional
+    volumes:
+      - ./calibre-web/data:/config
+      - ./calibre/config/'Calibre Library':/books
+    ports:
+      - 8083:8083
+    restart: unless-stopped
+    depends_on:
+      - calibre
+  calibre:
+    image: lscr.io/linuxserver/calibre:latest
+    container_name: calibre2
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+      # - PASSWORD= #optional
+      # - CLI_ARGS= #optional
+    volumes:
+      - ./calibre/config:/config
+    ports:
+      - 8018:8080
+      - 8181:8181
+      - 8081:8081
+    restart: unless-stopped
