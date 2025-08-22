@@ -1,64 +1,103 @@
-# Calibre + Calibre-Web 部署指南（NAS爱好者版）
+# Calibre + Calibre-Web 文档
+
+适合 **NAS 爱好者** 使用的 Calibre + Calibre-Web 部署与使用指南。
+
+---
 
 ## 简介
 
-在家庭 NAS 上管理电子书时，**Calibre + Calibre-Web** 是经典组合：
+* **Calibre**：功能强大的电子书管理工具，支持几乎所有电子书格式。
+* **Calibre-Web**：Calibre 的 Web 前端，提供浏览器访问、在线阅读和远程管理功能。
 
-* **Calibre**：功能强大的电子书管理工具，用于本地整理、分类、编辑元数据、转换格式。
-* **Calibre-Web**：轻量级 Web 前端，可通过浏览器访问 Calibre 库，支持搜索、在线阅读和下载。
+搭配 NAS，可以实现：
 
-## 部署架构
+* 家庭私有电子书管理系统
+* 在线阅读（手机 / 平板 / 电脑）
+* 支持分类、标签、搜索
+* 远程访问和共享
 
-* **Calibre**：在本地电脑或 NAS 上运行，用于管理主库。
-* **Calibre-Web**：以 Docker 容器运行，指向 Calibre 数据库目录，提供 Web UI。
+---
 
-## Docker Compose 示例
+## 功能特点
+
+* 支持多种电子书格式（EPUB, MOBI, PDF 等）
+* 在线阅读 & 下载
+* 分类、标签、作者、系列管理
+* 多用户支持（可控权限）
+* 与 OPDS 协议兼容，支持阅读器应用对接（如 KOReader, Marvin）
+
+---
+
+## 安装与部署
+
+### Docker Compose 示例
 
 ```yaml
-docker-compose.yml
-
 version: "3.8"
+
 services:
+  calibre:
+    image: linuxserver/calibre
+    container_name: calibre
+    restart: unless-stopped
+    volumes:
+      - ./config/calibre:/config
+      - ./books:/books
+    ports:
+      - "8080:8080"
+
   calibre-web:
     image: linuxserver/calibre-web
     container_name: calibre-web
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Asia/Shanghai
+    restart: unless-stopped
+    depends_on:
+      - calibre
     volumes:
-      - ./config:/config
+      - ./config/calibre-web:/config
       - ./books:/books
     ports:
-      - 8083:8083
-    restart: unless-stopped
+      - "8083:8083"
 ```
 
-* `./config`：Calibre-Web 配置目录
-* `./books`：Calibre 数据库所在目录（需包含 `metadata.db`）
-* Web UI 默认端口：`8083`
+* `./books`：存放电子书的目录
+* `./config/*`：配置文件存储目录
 
-## Calibre 与 Calibre-Web 配合方式
+访问：
 
-1. 在 **Calibre 桌面应用**中添加书籍，生成 `metadata.db`。
-2. 使用 Calibre 编辑元数据、生成封面、转换格式。
-3. Calibre-Web 指向 `metadata.db` 所在目录，即可展示最新书库。
+* Calibre: `http://NAS_IP:8080`
+* Calibre-Web: `http://NAS_IP:8083`
 
-## 使用体验
+---
 
-* ✅ **Calibre**：适合本地批量管理和格式转换。
-* ✅ **Calibre-Web**：适合家庭成员浏览、下载和在线阅读。
-* 🚫 Calibre-Web **不具备编辑功能**（如修改元数据、转换格式），这些需在 Calibre 桌面端完成。
+## 使用技巧
 
-## 进阶玩法
+* 上传书籍 → 使用 Calibre 桌面端批量管理
+* Calibre-Web → 用来远程访问和阅读
+* 标签和分类可以在 Calibre 中编辑好，再同步到 Web 端
+* 支持从 Calibre-Web 直接推送到 Kindle（需要配置邮箱）
 
-* 搭配 **COPS** 或 **Komga**，提供更丰富的前端选择。
-* 用 **Syncthing / Rclone / Nextcloud** 同步书库目录，实现多设备共享。
-* 搭配 **Traefik / Nginx Proxy Manager** 实现 HTTPS 和外网访问。
+---
 
-## 总结
+## 常见问题 (FAQ)
 
-* **Calibre** = 强大本地管理
-* **Calibre-Web** = 轻量 Web 访问
+**Q: Calibre 和 Calibre-Web 有什么区别？**
+A: Calibre 是桌面端管理工具，功能全面；Calibre-Web 是 Web 前端，专注远程访问和阅读。
 
-这一组合非常适合 NAS 爱好者：本地管理 + 网络访问，简单高效。
+**Q: 支持在线阅读吗？**
+A: 支持。Calibre-Web 内置 EPUB、PDF 在线阅读器。
+
+**Q: 能和手机电子书阅读器同步吗？**
+A: 支持 OPDS 协议，常见阅读器都能接入。
+
+---
+
+## 扩展资源
+
+* [Calibre 官方网站](https://calibre-ebook.com/)
+* [Calibre-Web GitHub](https://github.com/janeczku/calibre-web)
+* [LinuxServer.io 镜像文档](https://docs.linuxserver.io/images/docker-calibre)
+* [zlibrary](https://zh.z-library.sk/)
+
+---
+
+📚 部署好 Calibre + Calibre-Web，你的 NAS 就能变身电子书服务器，实现全平台访问和阅读。
