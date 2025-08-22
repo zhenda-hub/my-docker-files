@@ -28,8 +28,8 @@
 
 ## 联系我
 
-- 邮箱：example@email.com
-- GitHub：@你的用户名
+- 邮箱：<a href="mailto:msoft77564532@outlook.com">mailto:msoft77564532@outlook.com</a>
+- GitHub：<a href="https://github.com/zhenda-hub" target="_blank">https://github.com/zhenda-hub</a>
 
 感谢你的到访！如果你有任何建议或想一起探讨某个话题，随时联系我！
 
