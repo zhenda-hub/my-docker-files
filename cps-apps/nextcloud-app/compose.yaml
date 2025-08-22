@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  nextcloud:
+    image: nextcloud:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nextcloud:/var/www/html
+      - ./documents:/var/www/html/data
+
+  # OnlyOffice Document Server
+  onlyoffice:
+    image: onlyoffice/documentserver:latest
+    ports:
+      - "8081:80"
+    volumes:
+      - ./onlyoffice:/var/www/onlyoffice/Data
