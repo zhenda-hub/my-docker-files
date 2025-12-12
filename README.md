@@ -1,52 +1,14 @@
 # my-docker-files
 
-开箱即用的docker应用!
+docker应用百宝箱， 包括 docker配置和相关文档
 
-## 设备项目位置统计
-
-- ubunutu
-~/Documents/docker_ws/cloudreve_demo
-~/Documents/docker_ws/immich-app
-
-- windows
-F:\ME2\docker_ws
-
-
-
+```txt
 为nas爱好者,写一个 xxxx文档. 以可复制的markdown文件输出. 放进 MkDocs 博客
+```
 
-TODO:
-电子书转换为有声书
-AudioBookShelf
-sonarr
-Audiobook Maker
-<https://nasdaddy.com/how-to-install-audiobookshelf-on-your-nas/>
-<https://nasdaddy.com/how-to-make-audiobook-yourself-on-your-nas/>
+## mkdocs init
 
-改为名文链接
-
-不用登录
-
-glances
-speedtest
-metube
-
-
-
-登录
-stash
-portainer
-homarr
-filebrowser
-
-duplicati
-aria2-pro
-music-tag-web
-jellyfin
-navidrome
-immich
-
-
+```bash
 # create
 mkdocs new .
 
@@ -59,3 +21,14 @@ mkdocs serve -a localhost:8989
 
 # build
 mkdocs build
+```
+
+
+## 设备项目位置统计
+
+- ubunutu
+~/Documents/docker_ws/cloudreve_demo
+~/Documents/docker_ws/immich-app
+
+- windows
+F:\ME2\docker_ws
