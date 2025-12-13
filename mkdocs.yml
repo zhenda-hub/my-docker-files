@@ -159,6 +159,7 @@ theme:
 
 plugins:
   - search
+  - git-revision-date-localized
   # - i18n:
   #     default_language: zh
   #     languages:
