@@ -67,6 +67,7 @@ nav:
 # theme: readthedocs
 theme:
   name: material
+  font: false   # 这行就是关键，关闭 Google Fonts
   # language: zh
   # language: en
   features:
