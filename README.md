@@ -25,6 +25,16 @@ mkdocs serve -a localhost:8989
 mkdocs build
 ```
 
+
+```bash
+
+# 激活虚拟环境
+source .venv/bin/activate  # Linux/macOS
+# 或
+.venv\Scripts\activate     # Windows
+
+```
+
 ### mkdocs plugins
 
 - mkdocs-git-revision-date-localized-plugin: 自动显示文档最后修改时间（基于 Git 提交记录），支持格式自定义（如 YYYY-MM-DD）
