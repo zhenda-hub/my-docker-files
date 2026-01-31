@@ -1,52 +1,16 @@
 # my-docker-files
 
-开箱即用的docker应用!
+docker应用百宝箱， 包括 docker配置和相关文档
 
-## 设备项目位置统计
-
-- ubunutu
-~/Documents/docker_ws/cloudreve_demo
-~/Documents/docker_ws/immich-app
-
-- windows
-F:\ME2\docker_ws
-
-
-
+```txt
 为nas爱好者,写一个 xxxx文档. 以可复制的markdown文件输出. 放进 MkDocs 博客
+```
 
-TODO:
-电子书转换为有声书
-AudioBookShelf
-sonarr
-Audiobook Maker
-<https://nasdaddy.com/how-to-install-audiobookshelf-on-your-nas/>
-<https://nasdaddy.com/how-to-make-audiobook-yourself-on-your-nas/>
+## mkdocs init
 
-改为名文链接
+<https://squidfunk.github.io/mkdocs-material/>
 
-不用登录
-
-glances
-speedtest
-metube
-
-
-
-登录
-stash
-portainer
-homarr
-filebrowser
-
-duplicati
-aria2-pro
-music-tag-web
-jellyfin
-navidrome
-immich
-
-
+```bash
 # create
 mkdocs new .
 
@@ -59,3 +23,35 @@ mkdocs serve -a localhost:8989
 
 # build
 mkdocs build
+```
+
+
+```bash
+
+# 激活虚拟环境
+source .venv/bin/activate  # Linux/macOS
+# 或
+.venv\Scripts\activate     # Windows
+
+```
+
+### mkdocs plugins
+
+- mkdocs-git-revision-date-localized-plugin: 自动显示文档最后修改时间（基于 Git 提交记录），支持格式自定义（如 YYYY-MM-DD）
+- mkdocs-statistics-plugin: 生成字数、代码块数、阅读时间等统计信息（适合做分析 / 页面报告）
+- mkdocs-glightbox: 图片、视频、iframe 的现代化灯箱展示
+- mkdocs-video: 便捷嵌入视频
+- mkdocs-minify-plugin: 对“首屏加载 + 传输体积”的提升通常在 10%～40% 区间
+- mkdocs-encryptcontent-plugin: 页面加密
+- mkdocs-macros: 利用变量和宏
+
+
+
+## 设备项目位置统计
+
+- ubunutu
+~/Documents/docker_ws/cloudreve_demo
+~/Documents/docker_ws/immich-app
+
+- windows
+F:\ME2\docker_ws

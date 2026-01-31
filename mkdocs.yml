@@ -67,6 +67,7 @@ nav:
 # theme: readthedocs
 theme:
   name: material
+  font: false   # 这行就是关键，关闭 Google Fonts
   # language: zh
   # language: en
   features:
@@ -159,6 +160,9 @@ theme:
 
 plugins:
   - search
+  - optimize
+  - statistics
+  - git-revision-date-localized
   # - i18n:
   #     default_language: zh
   #     languages:
@@ -172,7 +176,7 @@ plugins:
 
   # - blog
 
-copyright: Copyright &copy; 2025 zhenda
+copyright: Copyright &copy; 2025-2026 zhenda
 
 
 markdown_extensions:
