@@ -1,22 +1,37 @@
+# ============================================================
+# Calibre + Calibre-Web 部署 (linuxserver 镜像, 2025-07 新版 Selkies 架构)
+#
+# 访问入口:
+#   Calibre GUI    https://<IP>:8181   # HTTPS + 自签名证书, 浏览器点"高级 -> 继续前往"
+#   内容服务器     http://<IP>:8082    # OPDS / Moon+ / KOReader
+#   Calibre-Web    http://<IP>:8083    # 纯 HTTP, 不要加 https
+#
+# 新版本要点:
+#   - Web UI 强制 HTTPS, 入口端口从 8080 改为 8181
+#   - 加 shm_size 防止 Selkies 桌面流黑屏/卡死
+# ============================================================
 services:
   calibre:
     image: lscr.io/linuxserver/calibre:latest
     container_name: calibre3
+    shm_size: "1gb"                       # 共享内存, 防黑屏/卡死 (默认仅 64MB)
     security_opt:
-      - seccomp:unconfined #optional
+      - seccomp:unconfined                # 可选, 老内核/老系统需要
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Shanghai
-      # - PASSWORD= #optional
-      # - CLI_ARGS= #optional
+      # - CUSTOM_USER=admin               # 可选: Web UI 登录账号
+      # - PASSWORD=change-me              # 可选: Web UI 登录密码
+      # - CLI_ARGS=                       # 可选
     volumes:
       - ./calibre/config:/config
     ports:
-      - 8018:8080
-      - 8181:8181
-      - 8082:8081
+      - 8018:8080   # 旧 Web UI 入口 (新镜像已弃用, 可删; 主入口见 8181)
+      - 8181:8181   # Calibre GUI Web UI (HTTPS, 自签名) ★ 主入口
+      - 8082:8081   # Calibre 内容服务器 (HTTP, OPDS/阅读器)
     restart: unless-stopped
+
   calibre-web:
     image: lscr.io/linuxserver/calibre-web:latest
     container_name: calibre-web3
@@ -24,54 +39,13 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Shanghai
-      - DOCKER_MODS=linuxserver/mods:universal-calibre #optional
-      - OAUTHLIB_RELAX_TOKEN_SCOPE=1 #optional
+      - DOCKER_MODS=linuxserver/mods:universal-calibre   # 可选: 启用电子书格式转换 (仅 x86-64)
+      - OAUTHLIB_RELAX_TOKEN_SCOPE=1                      # 可选: Google OAuth/Drive 同步
     volumes:
       - ./calibre-web/data:/config
       - ./calibre/config/Calibre Library:/books
     ports:
-      - 8083:8083
+      - 8083:8083   # Calibre-Web (HTTP)
     restart: unless-stopped
     depends_on:
       - calibre
-
-
-
-
----
-services:
-  calibre-web:
-    image: lscr.io/linuxserver/calibre-web:latest
-    container_name: calibre-web
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
-      - DOCKER_MODS=linuxserver/mods:universal-calibre #optional
-      - OAUTHLIB_RELAX_TOKEN_SCOPE=1 #optional
-    volumes:
-      - ./calibre-web/data:/config
-      - /path/to/calibre/library:/books
-    ports:
-      - 8083:8083
-    restart: unless-stopped
-
-
-
-
-
-docker run -d \
-  --name=calibre \
-  --security-opt seccomp=unconfined `#optional` \
-  -e PUID=1000 \
-  -e PGID=1000 \
-  -e TZ=Etc/UTC \
-  -e PASSWORD= `#optional` \
-  -e CLI_ARGS= `#optional` \
-  -p 8080:8080 \
-  -p 8181:8181 \
-  -p 8081:8081 \
-  -v /path/to/calibre/config:/config \
-  --shm-size="1gb" \
-  --restart unless-stopped \
-  lscr.io/linuxserver/calibre:latest
