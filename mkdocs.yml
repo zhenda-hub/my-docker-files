@@ -1,5 +1,9 @@
 site_name: Zhenda Nas Docs
 
+repo_url: https://github.com/zhenda-hub/my-docker-files
+repo_name: zhenda-hub/my-docker-files
+edit_uri: edit/main/docs/
+
 nav:
   - 首页: index.md
   - 什么是 NAS?: overview/what-is-nas.md
