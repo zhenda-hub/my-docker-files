@@ -25,3 +25,12 @@ go.work.sum
 .env
 
 site/
+
+# Python venv
+.venv/
+
+# mkdocs 构建缓存（optimize 插件生成）
+.cache/
+
+# 本地临时文件
+.tmp_rk/
